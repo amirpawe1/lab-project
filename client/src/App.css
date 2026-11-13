@@ -1,3 +1,11 @@
 @import "./mainn.css";
 @import "./recipess.css";
 @import "./reg.css";
+
+.grid {
+  gap: 25px;
+}
+
+#generateBtn {
+  width: auto;
+}
