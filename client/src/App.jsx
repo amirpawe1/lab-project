@@ -1,74 +1,89 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import RecipeList from "./components/RecipeList";
 import RegisterForm from "./components/RegisterForm";
 import "./App.css";
 
-const initialRecipes = [
-  {
-    id: 1,
-    name: "Vegetable Stir-Fry",
-    category: "Quick Meal",
-    description: "Use leftover carrots, broccoli, and bell peppers in 15 minutes.",
-    image: "/images/eda.png",
-  },
-  {
-    id: 2,
-    name: "Herb & Egg Frittata",
-    category: "Breakfast",
-    description: "Great way to finish remaining eggs, greens, and cheese.",
-    image: "/images/egg.png",
-  },
-  {
-    id: 3,
-    name: "Fresh Fruit Smoothie",
-    category: "Drink",
-    description: "Blend ripe bananas and berries before they spoil.",
-    image: "/images/edaa.png",
-  },
-];
-
 export default function App() {
-  const [activeTab, setActiveTab] = useState("recipes");
-  const [recipes, setRecipes] = useState(initialRecipes);
+  const [activePage, setActivePage] = useState("main");
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const handleDelete = (id) => {
-    setRecipes(recipes.filter((item) => item.id !== id));
+  useEffect(() => {
+    fetch("http://localhost:3000/api/recipes")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to load recipes from server");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setRecipes(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleAddRecipe = async (newRecipeData) => {
+    const res = await fetch("http://localhost:3000/api/recipes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newRecipeData),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to add recipe");
+    }
+    setRecipes((prev) => [...prev, data]);
   };
 
   return (
-    <div className="app">
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+    <div className="wrapper">
+      <Header activePage={activePage} setActivePage={setActivePage} />
 
-      <main className="container">
-        {activeTab === "recipes" && (
-          <RecipeList recipes={recipes} onDelete={handleDelete} />
-        )}
-
-        {activeTab === "tips" && (
-          <section className="section">
-            <h2>Smart Storage Tips</h2>
+      {activePage === "main" && (
+        <main className="glav">
+          <div className="content">
+            <h1>Food waste reduction</h1>
+            <p className="subtit">Help households use food before it spoils</p>
             <div className="grid">
               <div className="card">
-                <img src="/images/ice.png" alt="Freezer" />
-                <div className="card-body">
-                  <h3>Freeze Bread & Greens</h3>
-                  <p>Slice bread before freezing so you can toast single pieces.</p>
-                </div>
+                <div className="icon">🍎</div>
+                <h3>Track ingredients</h3>
+                <p>Keep track of what in your fridge and get reminders before products expire.</p>
               </div>
               <div className="card">
-                <img src="/images/calendar.png" alt="Calendar" />
-                <div className="card-body">
-                  <h3>FIFO Rule</h3>
-                  <p>First In, First Out — place older products at the front of the fridge.</p>
-                </div>
+                <div className="icon">🥗</div>
+                <h3>Smart recipes</h3>
+                <p>Discover quick and easy recipes based on the ingredients you already have at fridge.</p>
+              </div>
+              <div className="card">
+                <div className="icon">💡</div>
+                <h3>Useful tips</h3>
+                <p>Learn best practices for proper food storage to extend fresshness and save money.</p>
               </div>
             </div>
-          </section>
-        )}
+          </div>
+        </main>
+      )}
 
-        {activeTab === "register" && <RegisterForm />}
-      </main>
+      {activePage === "recipes" && (
+        <RecipeList
+          recipes={recipes}
+          loading={loading}
+          error={error}
+          onAddRecipe={handleAddRecipe}
+        />
+      )}
+
+      {activePage === "reg" && <RegisterForm />}
+
+      <Footer setActivePage={setActivePage} />
     </div>
   );
 }
