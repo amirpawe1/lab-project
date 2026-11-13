@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widtth=device-width, initial-scale=1.0">
+    <title>FoodSaver/ingredients</title>
+    <link rel="stylesheet" href="ingredientss.css"/>
+    <link rel="icon" type="image/png" href="images/leaf.png">
+</head>
+<body>
+<div class="wrapper">
+<header class="site-header">
+        <a href="main.html" class="logo-link">
+            <img src="images/leaf.png" alt="FoodSaver logo">
+            <span>FoodSaver</span>
+        </a>
+        <nav>
+            <a href="reg.html">Register</a>
+            <a href="main.html">Main</a>
+            <a href="ingredients.html">My ingredients</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="tips.html">Tips</a>
+            <a href="aboutus.html" class="active">About us</a>
+        </nav>
+    </header>
+<main>
+    <h1>My Ingredients</h1>
+    <div class="form">
+        <input type="text" id="product" placeholder="Product name">
+        <input type="date" id="date">
+        <button onclick="addProduct()">Add</button>
+    </div>
+    <h2>My products</h2>
+    <div id="list"></div>
+</main>
+<script>
+function addProduct() 
+{
+    let product = document.getElementById("product").value;
+    let date = document.getElementById("date").value;
+    if (product == "" || date == "") {
+        alert("Enter product and date");
+        return;
+    }
+    document.getElementById("list").innerHTML +=
+        `<div class="product">
+            <b>${product}</b>
+            <span>${date}</span>
+        </div>`;
+    document.getElementById("product").value = "";
+    document.getElementById("date").value = "";
+}
+</script>
+<footer class="podval1">
+    <div class="podval2">
+        <p>&copy; 2026 FoodSaver. All rights reserved.</p>
+
+        <ul class="podval3">
+            <li><a href="aboutus.html">About us</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+            <li><a href="confidision.html">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+</div>
+    </body>
+</html>

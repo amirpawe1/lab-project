@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="widtth=device-width, initial-scale=1.0">
+    <title>FoodSaver/recipes</title>
+    <link rel="stylesheet" href="recipess.css"/>
+    <link rel="icon" type="image/png" href="images/leaf.png">
+    <script src="recipesss.js" defer></script>
+</head>
+<body>
+<div class="wrapper">
+    <header class="site-header">
+        <a href="main.html" class="logo-link">
+            <img src="images/leaf.png" alt="FoodSaver logo">
+            <span>FoodSaver</span>
+        </a>
+        <nav>
+            <a href="reg.html">Register</a>
+            <a href="main.html">Main</a>
+            <a href="ingredients.html">My ingredients</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="tips.html">Tips</a>
+            <a href="aboutus.html" class="active">About us</a>
+        </nav>
+    </header>
+<section class="recipe-generator">
+    <h2>Find Recipes From Your Ingredients</h2>
+    <p>Enter the ingredients you have at home.</p>
+    <input
+        type="text"
+        id="ingredientsInput"
+        placeholder="e.g. eggs, potatoes, cheese"
+    >
+    <button id="generateBtn">Generate Recipes</button>
+    <div id="recipeResults"></div>
+</section>
+<footer class="podval1">
+    <div class="podval2">
+        <p>&copy; 2026 FoodSaver. All rights reserved.</p>
+
+        <ul class="podval3">
+            <li><a href="aboutus.html">About us</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+            <li><a href="confidision.html">Privacy</a></li>
+        </ul>
+    </div>
+</footer>
+</div>
+</body>
+</html>

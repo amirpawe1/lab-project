@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    background-color: #E8EFE3;
+    background-image:
+        radial-gradient(ellipse at top left, #F8F5E9 0%, transparent 55%),
+        linear-gradient(135deg, #E8EFE3, #D5E4D2);
+    font-family: Georgia, "Times New Roman", serif;
+    color: #263D30;
+}
+.site-header {
+    margin: 22px;
+    padding: 22px 30px;
+    background: rgba(255, 253, 246, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 8px 30px rgba(38, 61, 48, 0.08);
+}
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #244D38;
+    font-size: 30px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.logo-link img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 12px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(38, 61, 48, 0.08);
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+nav a {
+    color: #355B43;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 12px 17px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    transition: all 0.25s ease;
+}
+nav a:hover {
+    background-color: #E4EDDF;
+    border-color: #C9D9C6;
+    color: #1F5135;
+    transform: translateY(-2px);
+}
+nav a.active {
+    background-color: #2F6847;
+    border-color: #2F6847;
+    color: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(47, 104, 71, 0.18);
+}
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+main {
+        flex: 1;
+}
+.podval1 {
+    margin-top: auto;
+    background-color: #367a4a;
+    color: white;
+    padding: 25px 35px 15px;
+}
+.podval2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.podval2 p {
+    margin: 0;
+    font-size: 14px;
+    color: #f2f8f1;
+}
+.podval3 {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.podval3 a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+.podval3 a:hover {
+    color: #d6efb8;
+    text-decoration: underline;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.recipe-generator {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 25px;
+    text-align: center;
+}
+
+.recipe-generator h2 {
+    color:#2d4a3e;
+    font-size: 32px;
+}
+
+.recipe-generator p {
+    font-size: 18px;
+}
+
+#ingredientsInput {
+    width: 70%;
+    padding: 14px;
+    margin: 15px 0;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#generateBtn {
+    padding: 14px 22px;
+    background-color: rgb(28, 143, 28);
+    color: #2d4a3e;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#generateBtn:hover {
+    background-color: white;
+    color: rgb(28, 143, 28);
+}
+
+#recipeResults {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.recipe-card {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card h3 {
+    color: rgb(28, 143, 28);
+}
+
+.recipe-card li {
+    margin-bottom: 10px;
+}
